@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backends\BackendClient.cs" />
+    <Compile Include="Backends\IBackendClient.cs" />
     <Compile Include="Backends\TextFileBackend.cs" />
     <Compile Include="Models\BackendConfigFileModel.cs" />
     <Compile Include="Models\ConfigFileModel.cs" />

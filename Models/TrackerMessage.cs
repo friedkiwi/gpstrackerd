@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace gpstrackerd.Models
 {
@@ -39,7 +35,7 @@ namespace gpstrackerd.Models
                 degrees = Convert.ToDouble(gpslatlong.Substring(0, 2));
                 minutes = Convert.ToDouble(gpslatlong.Substring(2));
             }
-            
+
             decimalResult = degrees + (minutes / 60);
 
             if (dir == "S" || dir == "W")
@@ -58,7 +54,7 @@ namespace gpstrackerd.Models
 
         public override string ToString()
         {
-            return string.Format("Device ID: {0}, Latitude: {1}, Longitude: {2}, Speed: {3}, Direction: {4}", 
+            return string.Format("Device ID: {0}, Latitude: {1}, Longitude: {2}, Speed: {3}, Direction: {4}",
                 this.DeviceID, this.Lat, this.Long, this.Speed, this.Direction);
         }
     }

@@ -1,14 +1,10 @@
-﻿using System;
+﻿using gpstrackerd.Models;
+using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using gpstrackerd.Models;
 
 namespace gpstrackerd.Backends
 {
-    class TextFileBackend : BackendClient
+    class TextFileBackend : IBackendClient
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -20,7 +16,8 @@ namespace gpstrackerd.Backends
             if (OutputFilename == "")
             {
                 log.Warn("TextFileBackend initialised without output file - backend disabled.");
-            } else
+            }
+            else
             {
                 log.InfoFormat("TextFileBackend initialised using file name '{0}'.", OutputFilename);
             }
