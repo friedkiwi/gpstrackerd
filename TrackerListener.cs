@@ -11,6 +11,9 @@ class TrackerListener
     TcpListener server = null;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+    public delegate void dg_TrackingInfoReceived(TrackerMessage message);
+    public event dg_TrackingInfoReceived TrackingInfoReceived;
+
     public TrackerListener(string ip, int port)
     {
         IPAddress localAddr = IPAddress.Parse(ip);
@@ -92,6 +95,10 @@ class TrackerListener
                             trackerMessage.Speed = Convert.ToDouble(segments[9]);
                             trackerMessage.Direction = Convert.ToInt32(segments[10]);
                             log.InfoFormat("Received tracker message: {0}", trackerMessage.ToString());
+                            if (TrackingInfoReceived != null)
+                            {
+                                TrackingInfoReceived(trackerMessage);
+                            }
                         }
                     }
                     else
