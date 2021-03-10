@@ -1,0 +1,7 @@
+﻿port: 18000
+backends:
+- backendName: TextFile
+  backendEndpoint: tracker.log
+- backendName: Splunk
+  backendEndpoint: http://splunk-01.lan:8080
+  authToken: 123456
