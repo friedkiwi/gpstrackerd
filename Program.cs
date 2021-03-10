@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using gpstrackerd.Backends;
 
 namespace gpstrackerd
 {
@@ -12,7 +13,12 @@ namespace gpstrackerd
         static void Main(string[] args)
         {
             log.Info("Starting gpstrackerd");
+
+            var textBackend = new TextFileBackend("tracker.log");
+
             TrackerListener tl = new TrackerListener("0.0.0.0", 18000);
+            tl.TrackingInfoReceived += textBackend.HandleTrackingInfoReceived;
+            tl.StartListener();
         }
     }
 }

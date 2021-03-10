@@ -13,17 +13,21 @@ class TrackerListener
 
     public delegate void dg_TrackingInfoReceived(TrackerMessage message);
     public event dg_TrackingInfoReceived TrackingInfoReceived;
+    
+    public string IP { get; set; }
+    public int Port { get; set; }
 
     public TrackerListener(string ip, int port)
     {
-        IPAddress localAddr = IPAddress.Parse(ip);
-        server = new TcpListener(localAddr, port);
-        log.InfoFormat("Listening on {0}:{1}", ip, port);
-        server.Start();
-        StartListener();
+        this.IP = ip;
+        this.Port = port;
     }
     public void StartListener()
     {
+        IPAddress localAddr = IPAddress.Parse(this.IP);
+        server = new TcpListener(localAddr, this.Port);
+        log.InfoFormat("Listening on {0}:{1}", this.IP, this.Port);
+        server.Start();
         try
         {
             while (true)
