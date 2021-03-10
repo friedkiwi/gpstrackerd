@@ -1,0 +1,3 @@
+2021-02-13 16:23:37,335 [1] INFO elastic_gpstracker.Program - Starting elastic-gpstracker
+2021-02-13 16:23:37,351 [1] INFO TrackerListener - Listening on 0.0.0.0:18000
+2021-02-13 16:23:37,355 [1] INFO TrackerListener - Waiting for a connection...
