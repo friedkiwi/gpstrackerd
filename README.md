@@ -1,5 +1,8 @@
 ﻿# gpstrackerd
 
+[![Quality Gate Status](https://sonarqube.cyber.gent/api/project_badges/measure?project=gpstrackerd&metric=alert_status)](https://sonarqube.cyber.gent/dashboard?id=gpstrackerd)
+[![Security Rating](https://sonarqube.cyber.gent/api/project_badges/measure?project=gpstrackerd&metric=security_rating)](https://sonarqube.cyber.gent/dashboard?id=gpstrackerd)
+
 This is a simple daemon that can be used to receive the events from a popular family of Chinesium GPS trackers and store them in a configurable backend.
 
 Currently, the following backends are supported:
