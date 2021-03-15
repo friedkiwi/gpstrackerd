@@ -3,6 +3,12 @@ listenAddress: "0.0.0.0"
 backends:
 - backendName: TextFile
   backendEndpoint: tracker.log
+- backendName: Kml
+  backendEndpoint: tracker.log
 - backendName: Splunk
   backendEndpoint: http://splunk-01.lan:8080
   authToken: 123456
+- backendName: MySQL
+  username: testUser
+  password: testPassword
+  backendEndpoint: server=127.0.0.1;database=test

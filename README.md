@@ -8,6 +8,8 @@ Currently, the following backends are supported:
 * text file
 * Splunk
 * KML file
+* MySQL / MariaDB (WIP)
+* MQTT (TODO)
 
 The code has been tested on both MS .Net on Windows 10 and Mono on Ubuntu 20.04.
 
@@ -44,3 +46,24 @@ Usage:
     - backendName: kml
       backendEndpoint: tracker.kml
       authToken: 123456
+
+### MySQL/MariaDB backend
+
+gpstrackerd supports logging to a MySQL or MariaDB backend and relies on a table design compatible with the example below.
+
+Table creation code:
+
+    CREATE TABLE `gpstrackerd`.`tracker_events` (
+      `id` INT NOT NULL AUTO_INCREMENT , 
+      `device_id` TEXT NOT NULL , 
+      `direction` INT NOT NULL , 
+      `latitude` DOUBLE NOT NULL , 
+      `longitude` DOUBLE NOT NULL , 
+      `speed` DOUBLE NOT NULL , 
+      `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+      PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+Usage:
+
+_TODO: specify usage_
