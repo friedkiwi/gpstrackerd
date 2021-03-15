@@ -48,9 +48,13 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SharpKml.Core, Version=5.2.0.0, Culture=neutral, PublicKeyToken=9bb853c026a5c0ac, processorArchitecture=MSIL">
+      <HintPath>packages\SharpKml.Core.5.2.0\lib\net45\SharpKml.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backends\IBackendClient.cs" />
+    <Compile Include="Backends\KmlBackend.cs" />
+    <Compile Include="Backends\SplunkBackend.cs" />
     <Compile Include="Backends\TextFileBackend.cs" />
     <Compile Include="Models\BackendConfigFileModel.cs" />
     <Compile Include="Models\ConfigFileModel.cs" />

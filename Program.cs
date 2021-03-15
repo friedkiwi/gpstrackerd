@@ -29,8 +29,16 @@ namespace gpstrackerd
                     switch (backendConfig.BackendName.ToLowerInvariant())
                     {
                         case "textfile":
-                            var backend = new TextFileBackend(backendConfig.BackendEndpoint);
-                            trackerListener.TrackingInfoReceived += backend.HandleTrackingInfoReceived;
+                            var txtBackend = new TextFileBackend(backendConfig.BackendEndpoint);
+                            trackerListener.TrackingInfoReceived += txtBackend.HandleTrackingInfoReceived;
+                            break;
+                        case "splunk":
+                            var splunkBackend = new SplunkBackend(backendConfig.BackendEndpoint, backendConfig.AuthToken);
+                            trackerListener.TrackingInfoReceived += splunkBackend.HandleTrackingInfoReceived;
+                            break;
+                        case "kml":
+                            var kmlBackend = new KmlBackend(backendConfig.BackendEndpoint);
+                            trackerListener.TrackingInfoReceived += kmlBackend.HandleTrackingInfoReceived;
                             break;
                         default:
                             log.WarnFormat("Invalid backend name specified: {0}", backendConfig.BackendName);
