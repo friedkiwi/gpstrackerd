@@ -8,6 +8,8 @@ Currently, the following backends are supported:
 * Splunk
 * KML file
 
+The code has been tested on both MS .Net on Windows 10 and Mono on Ubuntu 20.04.
+
 ## Backends
 
 gpstrackerd supports several different backends that can be combined to design your logging infrastructure
