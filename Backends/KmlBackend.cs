@@ -27,7 +27,8 @@ namespace gpstrackerd.Backends
 
         public void HandleTrackingInfoReceived(TrackerMessage message)
         {
-            log.Error("Cannot log to KML file when no KML file has been specified.");
+            if (KmlFile == "")
+                log.Error("Cannot log to KML file when no KML file has been specified.");
 
             var point = new Point
             {
