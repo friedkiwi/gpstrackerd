@@ -22,8 +22,12 @@ namespace gpstrackerd
             try
             {
                 var config = deserializer.Deserialize<ConfigFileModel>(File.ReadAllText(args[0]));
+                var listenAddress = "127.0.0.1";
 
-                TrackerListener trackerListener = new TrackerListener("0.0.0.0", config.Port);
+                if (config.ListenAddress != "")
+                    listenAddress = config.ListenAddress;
+
+                TrackerListener trackerListener = new TrackerListener(listenAddress, config.Port);
                 foreach (var backendConfig in config.Backends)
                 {
                     switch (backendConfig.BackendName.ToLowerInvariant())

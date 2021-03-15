@@ -5,6 +5,7 @@ namespace gpstrackerd.Models
     class ConfigFileModel
     {
         public int Port { get; set; }
+        public string ListenAddress { get; set; }
         public List<BackendConfigFileModel> Backends { get; set; } = new List<BackendConfigFileModel>();
     }
 }
