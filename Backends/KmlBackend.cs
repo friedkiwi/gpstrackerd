@@ -7,20 +7,28 @@ namespace gpstrackerd.Backends
 {
     class KmlBackend : IBackendClient
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public string KmlFile { get; set; }
 
         public KmlBackend()
         {
-
+            
         }
 
-        public KmlBackend(string KmlFile)
+        public KmlBackend(string KmlFile) : this()
         {
             this.KmlFile = KmlFile;
+
+            if (KmlFile != "")
+                log.InfoFormat("KmlBackend initialised using file name '{0}'.", KmlFile);
+            else
+                log.InfoFormat("KmlBackend initialised without a file name specified.", KmlFile);
         }
 
         public void HandleTrackingInfoReceived(TrackerMessage message)
         {
+            log.Error("Cannot log to KML file when no KML file has been specified.");
+
             var point = new Point
             {
                 Coordinate = new Vector(message.Lat, message.Long)
@@ -45,6 +53,7 @@ namespace gpstrackerd.Backends
             var serializer = new Serializer();
             if (!File.Exists(KmlFile))
             {
+                log.InfoFormat("Creating new KML file '{0}'.", KmlFile);
                 var newKml = new Kml();
                 newKml.Feature = new Folder
                 {
@@ -64,6 +73,7 @@ namespace gpstrackerd.Backends
 
             serializer.Serialize(kml);
             File.WriteAllText(KmlFile, serializer.Xml);
+            log.InfoFormat("KmlBackend appended record to file '{0}'.", KmlFile);
 
         }
     }
