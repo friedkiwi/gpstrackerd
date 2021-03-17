@@ -24,8 +24,7 @@ namespace gpstrackerd
                 var config = deserializer.Deserialize<ConfigFileModel>(File.ReadAllText(args[0]));
                 var listenAddress = "127.0.0.1";
 
-                if (config.ListenAddress != "")
-                    listenAddress = config.ListenAddress;
+                
 
                 TrackerListener trackerListener = new TrackerListener(listenAddress, config.Port);
                 foreach (var backendConfig in config.Backends)
@@ -43,6 +42,10 @@ namespace gpstrackerd
                         case "kml":
                             var kmlBackend = new KmlBackend(backendConfig.BackendEndpoint);
                             trackerListener.TrackingInfoReceived += kmlBackend.HandleTrackingInfoReceived;
+                            break;
+                        case "mysql":
+                            var mysqlBackend = new MySqlBackend(backendConfig.BackendEndpoint, backendConfig.Username, backendConfig.Password);
+                            trackerListener.TrackingInfoReceived += mysqlBackend.HandleTrackingInfoReceived;
                             break;
                         default:
                             log.WarnFormat("Invalid backend name specified: {0}", backendConfig.BackendName);

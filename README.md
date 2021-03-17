@@ -8,7 +8,7 @@ Currently, the following backends are supported:
 * text file
 * Splunk
 * KML file
-* MySQL / MariaDB (WIP)
+* MySQL / MariaDB
 * MQTT (TODO)
 
 The code has been tested on both MS .Net on Windows 10 and Mono on Ubuntu 20.04.
@@ -66,7 +66,10 @@ Table creation code:
 
 Usage:
 
-_TODO: specify usage_
+    - backendName: MySQL
+      backendEndpoint: Server=hostname;Database=gpstrackerd
+      username: mysqlUsername
+      password: securePassword1!
 
 ### MQTT Backend
 
